@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-    FragmentTransaction transaction;
     FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (fragmentManager.getBackStackEntryCount() == 0) {
-                    transaction = fragmentManager.beginTransaction();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.add(R.id.main_container, new RegistrationFragment());
                     transaction.addToBackStack(null);
                     transaction.commit();
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         fragmentManager = getSupportFragmentManager();
-        transaction = fragmentManager.beginTransaction();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.main_container, new MainFragment());
         transaction.commit();
     }
